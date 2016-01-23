@@ -4,5 +4,8 @@
         "symfony/twig-bridge": "^3.0",
         "twig/twig": "^1.23",
         "doctrine/dbal": "2.2.*"
+    },
+    "autoload": {
+      "psr-0": {"Teammanager": "src/"}
     }
 }
