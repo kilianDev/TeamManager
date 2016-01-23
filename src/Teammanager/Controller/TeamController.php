@@ -16,7 +16,13 @@ class TeamController
 
     public function displayAction(Application $app, $id)
     {
+        $team = $app['repository.team']->find($id);
+
+        if (!$team) {
+            return $app['twig']->render('teamNotFound.html.twig', array());
+        }
         $data = array(
+            'team' => $team,
             'id' => $id
         );
 
