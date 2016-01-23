@@ -4,25 +4,13 @@
 $app->get('/', 'Teammanager\Controller\IndexController::indexAction');
 
 // Teams list
-$app->get('/teams', function () use ($app) {
-    return $app['twig']->render('teams.html.twig', array());
-});
+$app->get('/teams', 'Teammanager\Controller\TeamController::listAction');
 
 // Teammates list
-$app->get('/teammates', function () use ($app) {
-    return $app['twig']->render('teammates.html.twig', array());
-});
+$app->get('/teammates', 'Teammanager\Controller\TeammateController::listAction');
 
 // Team detail
-$app->get('/team/{id}', function ($id) use ($app) {
-    return $app['twig']->render('team.html.twig', array(
-        'id' => $id
-    ));
-});
+$app->get('/team/{id}', 'Teammanager\Controller\TeamController::displayAction');
 
 // Teammate detail
-$app->get('/teammate/{id}', function ($id) use ($app) {
-    return $app['twig']->render('teammate.html.twig', array(
-        'id' => $id
-    ));
-});
+$app->get('/teammate/{id}', 'Teammanager\Controller\TeammateController::displayAction');
