@@ -59,7 +59,7 @@ class TeammateRepository implements RepositoryInterface {
      */
     public function delete($id)
     {
-
+        $this->db->delete('teammate', array('id' => $id));
     }
 
     /**

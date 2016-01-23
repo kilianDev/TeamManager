@@ -66,7 +66,7 @@ class TeamRepository implements RepositoryInterface
      */
     public function delete($id)
     {
-
+        $this->db->delete('team', array('id' => $id));
     }
 
     /**

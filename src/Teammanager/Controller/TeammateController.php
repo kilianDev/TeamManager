@@ -62,4 +62,12 @@ class TeammateController {
         return $app['twig']->render('teammate/formTeammate.html.twig', array('form' => $form->createView()));
 
     }
+
+    public function deleteAction(Application $app, $id)
+    {
+        $app['repository.teammate']->delete($id);
+
+        $app['session']->getFlashBag()->add('success', 'Teammate has been deleted.');
+        return $app['twig']->render('index.html.twig', array());
+    }
 }

@@ -82,4 +82,12 @@ class TeamController
         return $app['twig']->render('team/editTeam.html.twig', array('form' => $form->createView()));
 
     }
+
+    public function deleteAction(Application $app, $id)
+    {
+        $app['repository.team']->delete($id);
+
+        $app['session']->getFlashBag()->add('success', 'Team has been deleted.');
+        return $app['twig']->render('index.html.twig', array());
+    }
 }
