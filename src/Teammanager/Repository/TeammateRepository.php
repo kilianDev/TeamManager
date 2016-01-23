@@ -24,7 +24,25 @@ class TeammateRepository implements RepositoryInterface {
      */
     public function save($teammate)
     {
+        $teammateData = array(
+            'firstname' => $teammate->getFirstname(),
+            'lastname' => $teammate->getLastname(),
+            'email' => $teammate->getEmail(),
+            'phone' => $teammate->getPhone(),
+            'image' => $teammate->getImage(),
+        );
 
+        if ($teammate->getId()) {
+            $this->db->update('teammate', $teammateData, array('id' => $teammate->getId()));
+        }
+        else {
+            $this->db->insert('teammate', $teammateData);
+            // Get the id of the newly created artist and set it on the entity.
+            $id = $this->db->lastInsertId();
+            $teammate->setId($id);
+        }
+
+        return $teammate;
     }
 
     /**

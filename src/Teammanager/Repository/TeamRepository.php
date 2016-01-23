@@ -25,7 +25,23 @@ class TeamRepository implements RepositoryInterface
      */
     public function save($team)
     {
+        $teamData = array(
+            'name' => $team->getName(),
+            'description' => $team->getDescription(),
+            'image' => $team->getImage(),
+        );
 
+        if ($team->getId()) {
+            $this->db->update('team', $teamData, array('id' => $team->getId()));
+        }
+        else {
+            $this->db->insert('team', $teamData);
+            // Get the id of the newly created artist and set it on the entity.
+            $id = $this->db->lastInsertId();
+            $team->setId($id);
+        }
+
+        return $team;
     }
 
     /**
