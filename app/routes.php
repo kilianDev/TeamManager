@@ -14,12 +14,12 @@ $app->get('/teammates', 'Teammanager\Controller\TeammateController::listAction')
 $app->match('/team/create', 'Teammanager\Controller\TeamController::createAction');
 
 // Team detail
-$app->get('/team/{id}', 'Teammanager\Controller\TeamController::displayAction')
+$app->match('/team/{id}', 'Teammanager\Controller\TeamController::editAction')
     ->assert('id', '\d+');
 
 // Teammate create
 $app->match('/teammate/create', 'Teammanager\Controller\TeammateController::createAction');
 
 // Teammate detail
-$app->get('/teammate/{id}', 'Teammanager\Controller\TeammateController::displayAction')
+$app->match('/teammate/{id}', 'Teammanager\Controller\TeammateController::editAction')
     ->assert('id', '\d+');

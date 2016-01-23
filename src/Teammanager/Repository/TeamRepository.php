@@ -33,12 +33,20 @@ class TeamRepository implements RepositoryInterface
 
         if ($team->getId()) {
             $this->db->update('team', $teamData, array('id' => $team->getId()));
+            $this->db->delete('team_has_teammate',array('team_id'=>$team->getId()));
         }
         else {
             $this->db->insert('team', $teamData);
             // Get the id of the newly created artist and set it on the entity.
             $id = $this->db->lastInsertId();
+
             $team->setId($id);
+        }
+
+        $teammates = $team->getTeammates();
+
+        foreach($teammates as $idTeammate) {
+            $this->db->insert('team_has_teammate',array('team_id' => $team->getId(), 'teammate_id' => $idTeammate));
         }
 
         return $team;
@@ -63,11 +71,9 @@ class TeamRepository implements RepositoryInterface
 
     /**
      * Return a collection of teams
-     * @param int $limit
-     * @param int $offset
-     * @param array $orderBy
+     *
      */
-    public function findAll($limit, $offset = 0, $orderBy = array())
+    public function findAll()
     {
 
     }
@@ -80,7 +86,15 @@ class TeamRepository implements RepositoryInterface
     public function find($id)
     {
         $teamData = $this->db->fetchAssoc('SELECT * FROM team WHERE id = ?', array($id));
-        return $teamData ? $this->hydrateTeam($teamData) : false;
+
+        if (!$teamData) {
+            return false;
+        }
+        $team = $this->hydrateTeam($teamData);
+        $teammates = $this->db->fetchAll('SELECT * FROM team_has_teammate WHERE team_id = ?', array($id));
+        $team->setTeammates($teammates);
+
+        return $team;
     }
 
     public function hydrateTeam($teamData)

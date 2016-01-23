@@ -13,25 +13,37 @@ class TeammateController {
 
     public function listAction(Application $app)
     {
-        $data = array();
+        $teammates = $app['repository.teammate']->findAll();
+
+        $data = array(
+            'teammates' => $teammates
+        );
 
         return $app['twig']->render('teammate/teammates.html.twig', $data);
     }
 
-    public function displayAction(Application $app, $id)
+    public function editAction(Application $app, Request $request, $id)
     {
+        /** @var Teammate $teammate */
         $teammate = $app['repository.teammate']->find($id);
 
         if (!$teammate) {
             return $app['twig']->render('teammate/teammateNotFound.html.twig', array());
         }
-        $data = array(
-            'teammate' => $teammate,
-            'id' => $id
-        );
 
-        return $app['twig']->render('teammate/teammate.html.twig', $data);
-    }
+        $form = $app['form.factory']->create(new TeammateType(), $teammate);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $app['repository.teammate']->save($teammate);
+            $app['session']->getFlashBag()->add('success', 'Teammate has been modified.');
+            return $app['twig']->render('teammate/successEditTeammate.html.twig', array());
+        }
+
+
+        // display the form
+        return $app['twig']->render('teammate/formTeammate.html.twig', array('form' => $form->createView()));    }
 
     public function createAction(Application $app, Request $request)
     {
@@ -47,7 +59,7 @@ class TeammateController {
         }
 
         // display the form
-        return $app['twig']->render('teammate/createTeammate.html.twig', array('form' => $form->createView()));
+        return $app['twig']->render('teammate/formTeammate.html.twig', array('form' => $form->createView()));
 
     }
 }

@@ -11,6 +11,15 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class TeamType extends AbstractType
 {
+    private $teammatesChoices;
+    private $teammatesSelected;
+
+    public function __construct($teammatesChoices, $teammatesSelected = null)
+    {
+        $this->teammatesChoices = $teammatesChoices;
+        $this->teammatesSelected = $teammatesSelected;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name','text', array(
@@ -18,12 +27,18 @@ class TeamType extends AbstractType
         ))
             ->add('description','textarea', array(
                 'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('max' => 254)))
+            ))
+            ->add('teammates', 'choice', array(
+                'choices' => $this->teammatesChoices,
+                'multiple' => true,
+                'expanded' => false,
+                'data' => $this->teammatesSelected,
             ));
     }
 
     public function getName()
     {
-        return 'Teammate';
+        return 'Team';
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

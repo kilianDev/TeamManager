@@ -64,13 +64,27 @@ class TeammateRepository implements RepositoryInterface {
 
     /**
      * Return a collection of teammates
-     * @param int $limit
-     * @param int $offset
-     * @param array $orderBy
+     *
      */
-    public function findAll($limit, $offset = 0, $orderBy = array())
+    public function findAll()
     {
+        $orderBy = array('firstname' => 'ASC');
 
+        $queryBuilder = $this->db->createQueryBuilder();
+        $queryBuilder
+            ->select('tm.*')
+            ->from('teammate', 'tm')
+            ->orderBy('tm.' . key($orderBy), current($orderBy));
+        $statement = $queryBuilder->execute();
+        $teammatesData = $statement->fetchAll();
+
+        $teammates = array();
+        foreach ($teammatesData as $teammateData) {
+            $teammateId = $teammateData['id'];
+            $teammates[$teammateId] = $this->hydrateTeammate($teammateData);
+        }
+
+        return $teammates;
     }
 
     /**

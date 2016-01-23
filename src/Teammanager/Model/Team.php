@@ -26,6 +26,11 @@ class Team {
     protected $image;
 
     /**
+     * @var array
+     */
+    protected $teammates;
+
+    /**
      * @return int
      */
     public function getId()
@@ -88,6 +93,23 @@ class Team {
     {
         $this->image = $image;
     }
+
+    /**
+     * @return array
+     */
+    public function getTeammates()
+    {
+        return $this->teammates;
+    }
+
+    /**
+     * @param array $teammates
+     */
+    public function setTeammates($teammates)
+    {
+        $this->teammates = $teammates;
+    }
+
 
 
 

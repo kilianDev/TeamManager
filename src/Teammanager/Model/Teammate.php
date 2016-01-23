@@ -132,5 +132,9 @@ class Teammate
         $this->image = $image;
     }
 
+    public function getFirstAndLastName()
+    {
+        return $this->getFirstname().' '.$this->getLastname();
+    }
 
 }
