@@ -75,7 +75,27 @@ class TeamRepository implements RepositoryInterface
      */
     public function findAll()
     {
+        $orderBy = array('name' => 'ASC');
 
+        $queryBuilder = $this->db->createQueryBuilder();
+        $queryBuilder
+            ->select('t.*')
+            ->from('team', 't')
+            ->orderBy('t.' . key($orderBy), current($orderBy));
+        $statement = $queryBuilder->execute();
+        $teamsData = $statement->fetchAll();
+
+        $teams = array();
+        foreach ($teamsData as $teamData) {
+            $teamId = $teamData['id'];
+            $team = $this->hydrateTeam($teamData);
+
+            $teammates = $this->db->fetchAll('SELECT * FROM team_has_teammate INNER JOIN teammate WHERE team_id = ?', array($teamId));
+            $team->setTeammates($teammates);
+            $teams[$teamId] = $team;
+        }
+
+        return $teams;
     }
 
     /**

@@ -13,7 +13,11 @@ class TeamController
 
     public function listAction(Application $app)
     {
-        $data = array();
+        $teams = $app['repository.team']->findAll();
+
+        $data = array(
+            'teams' => $teams
+        );
 
         return $app['twig']->render('team/teams.html.twig', $data);
     }

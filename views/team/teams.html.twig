@@ -1,1 +1,10 @@
 Teams list
+
+{% for team in teams %}
+    <br />
+    Displaying team id : {{ team.id }}
+
+    <br />Name : {{ team.name }}
+    <br />Description : {{ team.description }}
+    <br />Image : {{ team.image }}
+{% endfor %}
