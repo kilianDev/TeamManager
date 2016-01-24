@@ -1,7 +1,15 @@
-Displaying teammate id : {{ teammate.id }}
+{% extends 'layout.html.twig' %}
+{% set active = 'teammates' %}
 
-<br />Firstname : {{ teammate.firstname }}
-<br />Lastname : {{ teammate.lastname }}
-<br />Email : {{ teammate.email }}
-<br />Phone : {{ teammate.phone }}
-<br />Image : {{ teammate.image }}
+{% block content %}
+
+    Displaying teammate id : {{ teammate.id }}
+
+    <br />Firstname : {{ teammate.firstname }}
+    <br />Lastname : {{ teammate.lastname }}
+    <br />Email : {{ teammate.email }}
+    <br />Phone : {{ teammate.phone }}
+    <br />Image : {{ teammate.image }}
+
+
+{% endblock %}

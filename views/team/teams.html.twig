@@ -1,10 +1,18 @@
-Teams list
+{% extends 'layout.html.twig' %}
+{% set active = 'teams' %}
 
-{% for team in teams %}
-    <br />
-    Displaying team id : {{ team.id }}
+{% block content %}
 
-    <br />Name : {{ team.name }}
-    <br />Description : {{ team.description }}
-    <br />Image : {{ team.image }}
-{% endfor %}
+    Teams list
+
+    {% for team in teams %}
+        <br />
+        Displaying team id : {{ team.id }}
+
+        <br />Name : {{ team.name }}
+        <br />Description : {{ team.description }}
+        <br />Image : {{ team.image }}
+    {% endfor %}
+
+
+{% endblock %}

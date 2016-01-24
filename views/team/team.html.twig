@@ -1,5 +1,13 @@
-Displaying team id : {{ team.id }}
+{% extends 'layout.html.twig' %}
+{% set active = 'teams' %}
 
-<br />Name : {{ team.name }}
-<br />Description : {{ team.description }}
-<br />Image : {{ team.image }}
+{% block content %}
+
+    Displaying team id : {{ team.id }}
+
+    <br />Name : {{ team.name }}
+    <br />Description : {{ team.description }}
+    <br />Image : {{ team.image }}
+
+
+{% endblock %}

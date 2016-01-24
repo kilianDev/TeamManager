@@ -1,0 +1,52 @@
+/* -------------
+    HTML Components
+   ------------- */
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* -------------
+    Navbar
+   ------------- */
+.navbar {
+  background-color: #FFFFFF;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #333333;
+}
+
+.navbar li {
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.navbar li.active {
+  border-top: 3px solid #38578C;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    color: #38578C;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+  color: #38578C;
+  background-color: transparent;
+}
+
+.navbar li a {
+  user-select: none;
+  position: relative;
+}

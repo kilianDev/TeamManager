@@ -1,12 +1,20 @@
-Teammates list
+{% extends 'layout.html.twig' %}
+{% set active = 'teammates' %}
 
-{% for teammate in teammates %}
-    <br />
-    Displaying teammate id : {{ teammate.id }}
+{% block content %}
 
-    <br />Firstname : {{ teammate.firstname }}
-    <br />Lastname : {{ teammate.lastname }}
-    <br />Email : {{ teammate.email }}
-    <br />Phone : {{ teammate.phone }}
-    <br />Image : {{ teammate.image }}
-{% endfor %}
+    Teammates list
+
+    {% for teammate in teammates %}
+        <br />
+        Displaying teammate id : {{ teammate.id }}
+
+        <br />Firstname : {{ teammate.firstname }}
+        <br />Lastname : {{ teammate.lastname }}
+        <br />Email : {{ teammate.email }}
+        <br />Phone : {{ teammate.phone }}
+        <br />Image : {{ teammate.image }}
+    {% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+<!-- Navbar -->
+{% set active = active|default(null) %}
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li {% if 'teams' == active %}class="active"{% endif %}>
+                    <a href="/teammanager/web/teams">Teams</a>
+                </li>
+                <li {% if 'teammates' == active %}class="active"{% endif %}>
+                    <a href="/teammanager/web/teammates">Teammates</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- /Navbar -->

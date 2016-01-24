@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Team Manager">
+        <meta name="author" content="">
+
+        <title>Team</title>
+
+        <!-- External CSS -->
+        <link href="{{ app.request.basepath }}/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ app.request.basepath }}/css/font-awesome.min.css" rel="stylesheet">
+        <!-- /External CSS -->
+
+        <!-- Main CSS -->
+        <link href="{{ app.request.basepath }}/css/main.css" rel="stylesheet">
+        <!-- /Main CSS -->
+
+        <!-- External Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300italic,600' rel='stylesheet' type='text/css'>
+        <!-- /External Fonts -->
+    </head>
+
+    <body>
+
+        {% include 'navbar.html.twig' %}
+
+        {% include 'flashbag.html.twig' %}
+
+        {% block content %}
+        {% endblock %}
+
+
+        <!-- External javascript -->
+        <script src="{{ app.request.basepath }}/js/jquery-2.1.4.min.js"></script>
+        <script src="{{ app.request.basepath }}/js/bootstrap.min.js"></script>
+
+        <!-- Main Javascript -->
+        <script src="{{ app.request.basepath }}/js/main.js"></script>
+
+    </body>
+</html>
