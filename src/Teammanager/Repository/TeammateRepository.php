@@ -6,6 +6,10 @@ namespace Teammanager\Repository;
 use Doctrine\DBAL\Connection;
 use Teammanager\Model\Teammate;
 
+/**
+ * Class TeammateRepository
+ * @package Teammanager\Repository
+ */
 class TeammateRepository implements RepositoryInterface {
 
     /**
@@ -20,7 +24,8 @@ class TeammateRepository implements RepositoryInterface {
 
     /**
      * Save the teammate
-     * @param Teammate $teammate
+     * @param object $teammate
+     * @return object
      */
     public function save($teammate)
     {
@@ -98,6 +103,10 @@ class TeammateRepository implements RepositoryInterface {
         return $teammateData ? $this->hydrateTeammate($teammateData) : false;
     }
 
+    /**
+     * @param $teamData
+     * @return Teammate
+     */
     public function hydrateTeammate($teamData)
     {
         $teammate = new Teammate();

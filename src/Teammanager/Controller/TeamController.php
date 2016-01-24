@@ -8,9 +8,16 @@ use Teammanager\Form\TeamType;
 use Teammanager\Model\Team;
 use Teammanager\Model\Teammate;
 
+/**
+ * Class TeamController
+ * @package Teammanager\Controller
+ */
 class TeamController
 {
-
+    /**
+     * @param Application $app
+     * @return mixed
+     */
     public function listAction(Application $app)
     {
         $teams = $app['repository.team']->findAll();
@@ -22,6 +29,12 @@ class TeamController
         return $app['twig']->render('team/teams.html.twig', $data);
     }
 
+    /**
+     * @param Application $app
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function editAction(Application $app, Request $request, $id)
     {
         /** @var Team $team */
@@ -60,6 +73,11 @@ class TeamController
         return $app['twig']->render('team/formTeam.html.twig', array('form' => $form->createView()));
     }
 
+    /**
+     * @param Application $app
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function createAction(Application $app, Request $request)
     {
         $team = new Team();
@@ -87,6 +105,11 @@ class TeamController
 
     }
 
+    /**
+     * @param Application $app
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function deleteAction(Application $app, $id)
     {
         $app['repository.team']->delete($id);

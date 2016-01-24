@@ -5,8 +5,17 @@ namespace Teammanager\Controller;
 
 use Silex\Application;
 
-class IndexController {
+/**
+ * Class IndexController
+ * @package Teammanager\Controller
+ */
+class IndexController
+{
 
+    /**
+     * @param Application $app
+     * @return mixed
+     */
     public function indexAction(Application $app)
     {
         $data = array();

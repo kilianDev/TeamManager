@@ -8,9 +8,16 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
+/**
+ * Class TeammateType
+ * @package Teammanager\Form
+ */
 class TeammateType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('firstname','text', array(
@@ -32,11 +39,17 @@ class TeammateType extends AbstractType
             ->add('submit', 'submit');
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'Teammate';
     }
 
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(

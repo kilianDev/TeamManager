@@ -2,7 +2,10 @@
 
 namespace Teammanager\Model;
 
-
+/**
+ * Class Teammate
+ * @package Teammanager\Model
+ */
 class Teammate
 {
 

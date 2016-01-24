@@ -7,6 +7,10 @@ use Doctrine\DBAL\Connection;
 use Teammanager\Model\Team;
 use Teammanager\Model\Teammate;
 
+/**
+ * Class TeamRepository
+ * @package Teammanager\Repository
+ */
 class TeamRepository implements RepositoryInterface
 {
 
@@ -22,7 +26,9 @@ class TeamRepository implements RepositoryInterface
 
     /**
      * Save the team
-     * @param Team $team
+     * @param object $team
+     * @return object
+     * @throws \Doctrine\DBAL\Exception\InvalidArgumentException
      */
     public function save($team)
     {
@@ -125,6 +131,10 @@ class TeamRepository implements RepositoryInterface
         return $team;
     }
 
+    /**
+     * @param $teamData
+     * @return Team
+     */
     public function hydrateTeam($teamData)
     {
         $team = new Team();

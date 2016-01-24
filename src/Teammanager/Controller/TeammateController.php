@@ -9,8 +9,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Teammanager\Form\TeammateType;
 use Teammanager\Model\Teammate;
 
-class TeammateController {
-
+/**
+ * Class TeammateController
+ * @package Teammanager\Controller
+ */
+class TeammateController
+{
+    /**
+     * @param Application $app
+     * @return mixed
+     */
     public function listAction(Application $app)
     {
         $teammates = $app['repository.teammate']->findAll();
@@ -22,6 +30,12 @@ class TeammateController {
         return $app['twig']->render('teammate/teammates.html.twig', $data);
     }
 
+    /**
+     * @param Application $app
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function editAction(Application $app, Request $request, $id)
     {
         /** @var Teammate $teammate */
@@ -43,8 +57,14 @@ class TeammateController {
 
 
         // display the form
-        return $app['twig']->render('teammate/formTeammate.html.twig', array('form' => $form->createView()));    }
+        return $app['twig']->render('teammate/formTeammate.html.twig', array('form' => $form->createView()));
+    }
 
+    /**
+     * @param Application $app
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function createAction(Application $app, Request $request)
     {
         $teammate = new Teammate();
@@ -63,6 +83,11 @@ class TeammateController {
 
     }
 
+    /**
+     * @param Application $app
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function deleteAction(Application $app, $id)
     {
         $app['repository.teammate']->delete($id);

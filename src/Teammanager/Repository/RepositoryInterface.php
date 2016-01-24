@@ -2,6 +2,10 @@
 
 namespace Teammanager\Repository;
 
+/**
+ * Interface RepositoryInterface
+ * @package Teammanager\Repository
+ */
 interface RepositoryInterface
 {
     /**
