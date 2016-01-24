@@ -50,7 +50,7 @@ class TeammateRepository implements RepositoryInterface {
      */
     public function getCount()
     {
-
+        return $this->db->fetchColumn('SELECT COUNT(id) FROM teammate');
     }
 
     /**

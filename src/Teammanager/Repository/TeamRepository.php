@@ -58,7 +58,7 @@ class TeamRepository implements RepositoryInterface
      */
     public function getCount()
     {
-
+        return $this->db->fetchColumn('SELECT COUNT(id) FROM team');
     }
 
     /**
