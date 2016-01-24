@@ -36,9 +36,13 @@
         <!-- External javascript -->
         <script src="{{ app.request.basepath }}/js/jquery-2.1.4.min.js"></script>
         <script src="{{ app.request.basepath }}/js/bootstrap.min.js"></script>
+        <script src="{{ app.request.basepath }}/js/bootbox.min.js"></script>
 
         <!-- Main Javascript -->
         <script src="{{ app.request.basepath }}/js/main.js"></script>
+
+        {% block javascript %}
+        {% endblock %}
 
     </body>
 </html>

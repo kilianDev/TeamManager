@@ -52,6 +52,9 @@ a:hover {
   position: relative;
 }
 
+/* -------------
+    Page
+   ------------- */
 .page-title {
     text-align: left;
     font-size: 2em;
@@ -66,10 +69,9 @@ a:hover {
     margin-bottom: 20px;
 }
 
-.img-rounded {
-    border-radius: 50% !important;
-}
-
+/* -------------
+    Cards
+   ------------- */
 .card {
     padding: 10px;
     margin: 20px;
@@ -104,4 +106,10 @@ a:hover {
 .team-teammates {
     text-align: right;
     font-style: italic;
+}
+
+
+/* Will be useful if avatars are handled... */
+.img-rounded {
+    border-radius: 50% !important;
 }

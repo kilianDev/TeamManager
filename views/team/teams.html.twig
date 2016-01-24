@@ -44,7 +44,7 @@
                         {% endif %}
                         <hr>
                         <div class="btn-actions">
-                            <a class="btn btn-danger" href="/teammanager/web/team/{{ team.id }}/delete"><i class="fa fa-trash-o"> Delete</i></a>
+                            <a class="btn btn-danger need-confirmation" href="/teammanager/web/team/{{ team.id }}/delete"><i class="fa fa-trash-o"> Delete</i></a>
                             <a class="btn btn-primary" href="/teammanager/web/team/{{ team.id }}"><i class="fa fa-pencil-square-o"> Edit</i></a>
                         </div>
                     </div>
@@ -54,5 +54,27 @@
         {% endif %}
     </div>
 
+
+{% endblock %}
+
+
+{% block javascript %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('.need-confirmation').on('click', function (e) {
+                var link = this;
+
+                e.preventDefault();
+
+                bootbox.confirm("This action is irreversible. Are you sure?", function(result) {
+                    if (result)
+                        window.location = link.href;
+                });
+            });
+        });
+
+    </script>
 
 {% endblock %}
