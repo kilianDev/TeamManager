@@ -7,13 +7,15 @@
 
     {% for teammate in teammates %}
         <br />
-        Displaying teammate id : {{ teammate.id }}
+        Displaying teammate id : <a href="/teammanager/web/teammate/{{ teammate.id }}">{{ teammate.id }}</a>
 
         <br />Firstname : {{ teammate.firstname }}
         <br />Lastname : {{ teammate.lastname }}
         <br />Email : {{ teammate.email }}
         <br />Phone : {{ teammate.phone }}
         <br />Image : {{ teammate.image }}
+        <br /><a href="/teammanager/web/teammate/{{ teammate.id }}/delete"><i class="fa fa-trash-o"></i></a>
+        <br />
     {% endfor %}
 
 

@@ -7,11 +7,12 @@
 
     {% for team in teams %}
         <br />
-        Displaying team id : {{ team.id }}
-
+        Displaying team id : <a href="/teammanager/web/team/{{ team.id }}">{{ team.id }}</a>
         <br />Name : {{ team.name }}
         <br />Description : {{ team.description }}
         <br />Image : {{ team.image }}
+        <br /><a href="/teammanager/web/team/{{ team.id }}/delete"><i class="fa fa-trash-o"></i></a>
+        <br />
     {% endfor %}
 
 

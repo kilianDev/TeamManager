@@ -38,7 +38,7 @@ class TeammateController {
         if ($form->isValid()) {
             $app['repository.teammate']->save($teammate);
             $app['session']->getFlashBag()->add('success', 'Teammate has been modified.');
-            return $app['twig']->render('teammate/successEditTeammate.html.twig', array());
+            return $app->redirect('/teammanager/web/teammates');
         }
 
 
@@ -55,7 +55,7 @@ class TeammateController {
         if ($form->isValid()) {
             $app['repository.teammate']->save($teammate);
             $app['session']->getFlashBag()->add('success', 'Teammate has been added.');
-            return $app['twig']->render('teammate/successCreateTeammate.html.twig', array());
+            return $app->redirect('/teammanager/web/teammates');
         }
 
         // display the form
@@ -68,6 +68,6 @@ class TeammateController {
         $app['repository.teammate']->delete($id);
 
         $app['session']->getFlashBag()->add('success', 'Teammate has been deleted.');
-        return $app['twig']->render('index.html.twig', array());
+        return $app->redirect('/teammanager/web/teammates');
     }
 }

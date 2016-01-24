@@ -53,6 +53,7 @@ class TeamController
         if ($form->isValid()) {
             $app['repository.team']->save($team);
             $app['session']->getFlashBag()->add('success', 'Team has been modified.');
+            return $app->redirect('/teammanager/web/teams');
         }
 
         // display the form
@@ -78,8 +79,7 @@ class TeamController
         if ($form->isValid()) {
             $app['repository.team']->save($team);
             $app['session']->getFlashBag()->add('success', 'Team has been added.');
-            exit;
-            //return $app['twig']->render('team/successCreateteam.html.twig', array());
+            return $app->redirect('/teammanager/web/teams');
         }
 
         // display the form
@@ -92,6 +92,6 @@ class TeamController
         $app['repository.team']->delete($id);
 
         $app['session']->getFlashBag()->add('success', 'Team has been deleted.');
-        return $app['twig']->render('index.html.twig', array());
+        return $app->redirect('/teammanager/web/teams');
     }
 }
