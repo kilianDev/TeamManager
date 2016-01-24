@@ -1,11 +1,14 @@
-{% set alertTypeAvaillable = [ 'info', 'success', 'warning', 'error'] %}
-{% for alert in alertTypeAvaillable %}
-    {% for message in app.session.getFlashBag.get(alert) %}
-        <div class="alert alert-{{ alert }}" >
-            <button class="close" data-dismiss="alert">×</button>
-            {{ message|trans }}
-        </div>
-    {% endfor %}
-{% endfor %}
+{% extends 'layout.html.twig' %}
+{% set active = 'home' %}
 
-Homepage
+{% block content %}
+
+    <div class="col-lg-12 title">
+        Team Manager
+    </div>
+    <div class="col-lg-12 subtitle">
+        Click <a href="/teammanager/web/teams">here</a> to manage the team(s)
+        <br />Click <a href="/teammanager/web/teammates">here</a> to manage the teammate(s)
+    </div>
+
+{% endblock %}

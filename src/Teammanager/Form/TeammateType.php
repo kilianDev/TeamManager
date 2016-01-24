@@ -14,17 +14,22 @@ class TeammateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('firstname','text', array(
-            'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('max' => 254)))
+            'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('max' => 254))),
+            'required' => true
         ))
             ->add('lastname','text', array(
-                'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('max' => 254)))
+                'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('max' => 254))),
+                'required' => true
             ))
-            ->add('email','text', array(
-                'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('max' => 254)))
+            ->add('email','email', array(
+                'constraints' => array(new Assert\Length(array('max' => 254))),
+                'required' => false
             ))
             ->add('phone','text', array(
-                'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('max' => 20)))
-            ));
+                'constraints' => array(new Assert\Length(array('max' => 20))),
+                'required' => false
+            ))
+            ->add('submit', 'submit');
     }
 
     public function getName()

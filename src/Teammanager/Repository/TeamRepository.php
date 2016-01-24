@@ -5,6 +5,7 @@ namespace Teammanager\Repository;
 
 use Doctrine\DBAL\Connection;
 use Teammanager\Model\Team;
+use Teammanager\Model\Teammate;
 
 class TeamRepository implements RepositoryInterface
 {
@@ -90,8 +91,15 @@ class TeamRepository implements RepositoryInterface
             $teamId = $teamData['id'];
             $team = $this->hydrateTeam($teamData);
 
-            $teammates = $this->db->fetchAll('SELECT * FROM team_has_teammate INNER JOIN teammate WHERE team_id = ?', array($teamId));
-            $team->setTeammates($teammates);
+            $teammates = $this->db->fetchAll('SELECT * FROM team_has_teammate INNER JOIN teammate ON team_has_teammate.teammate_id = teammate.id WHERE team_id = ?', array($teamId));
+
+            $arrayTeammate = array();
+            foreach ($teammates as $teammateData) {
+                $teammate = new Teammate();
+                $teammate->hydrate($teammateData);
+                $arrayTeammate[] = $teammate;
+            }
+            $team->setTeammates($arrayTeammate);
             $teams[$teamId] = $team;
         }
 

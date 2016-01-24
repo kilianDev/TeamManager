@@ -57,7 +57,7 @@ class TeamController
         }
 
         // display the form
-        return $app['twig']->render('team/editTeam.html.twig', array('form' => $form->createView()));
+        return $app['twig']->render('team/formTeam.html.twig', array('form' => $form->createView()));
     }
 
     public function createAction(Application $app, Request $request)
@@ -83,7 +83,7 @@ class TeamController
         }
 
         // display the form
-        return $app['twig']->render('team/editTeam.html.twig', array('form' => $form->createView()));
+        return $app['twig']->render('team/formTeam.html.twig', array('form' => $form->createView()));
 
     }
 

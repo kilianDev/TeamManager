@@ -3,20 +3,51 @@
 
 {% block content %}
 
-    Teammates list
+    <div class="container-fluid">
 
-    {% for teammate in teammates %}
-        <br />
-        Displaying teammate id : <a href="/teammanager/web/teammate/{{ teammate.id }}">{{ teammate.id }}</a>
+        <div class="col-lg-6 page-title">
+            Teammates list
+        </div>
 
-        <br />Firstname : {{ teammate.firstname }}
-        <br />Lastname : {{ teammate.lastname }}
-        <br />Email : {{ teammate.email }}
-        <br />Phone : {{ teammate.phone }}
-        <br />Image : {{ teammate.image }}
-        <br /><a href="/teammanager/web/teammate/{{ teammate.id }}/delete"><i class="fa fa-trash-o"></i></a>
-        <br />
-    {% endfor %}
+        <div class="col-lg-6 page-action-bar">
+            <a href="/teammanager/web/teammate/create"><i class="fa fa-plus-circle"></i> Create a teammate</a>
+        </div>
+
+        {% if teammates is empty %}
+            <div class="col-lg-12 title">
+                You have no teammates :(
+            </div>
+            <div class="col-lg-12 subtitle">
+                Click <a href="/teammanager/web/teammate/create">here</a> to create one
+            </div>
+        {% else %}
+            {% for teammate in teammates %}
+                <div class="col-lg-4 col-md-4 col-sm-6 col-sm-12">
+                    <div class="card">
+                        <div>
+                            <strong>{{ teammate.firstname }}</strong>
+                        </div>
+                        <div>
+                            <strong>{{ teammate.lastname }}</strong>
+                        </div>
+                        <div>
+                            <i class="fa fa-envelope"></i>
+                            {{ teammate.email }}
+                        </div>
+                        <div>
+                            <i class="fa fa-phone"></i>
+                            {{ teammate.phone }}
+                        </div>
+                        <hr>
+                        <div class="btn-actions">
+                            <a class="btn btn-danger" href="/teammanager/web/teammate/{{ teammate.id }}/delete"><i class="fa fa-trash-o"> Delete</i></a>
+                            <a class="btn btn-primary" href="/teammanager/web/teammate/{{ teammate.id }}"><i class="fa fa-pencil-square-o"> Edit</i></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
 
 
 {% endblock %}

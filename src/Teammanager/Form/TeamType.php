@@ -23,16 +23,19 @@ class TeamType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name','text', array(
-            'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('max' => 254)))
+            'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('max' => 255))),
+            'required' => true
         ))
             ->add('description','textarea', array(
-                'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('max' => 254)))
+                'constraints' => array(new Assert\NotBlank(), new Assert\Length(array('max' => 255))),
+                'required' => false
             ))
             ->add('teammates', 'choice', array(
                 'choices' => $this->teammatesChoices,
                 'multiple' => true,
                 'expanded' => false,
                 'data' => $this->teammatesSelected,
+                'required' => false
             ));
     }
 

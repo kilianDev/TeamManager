@@ -3,6 +3,7 @@
    ------------- */
 body {
   font-family: 'Open Sans', sans-serif;
+    background-color: #EFEFEF;
 }
 
 a:hover {
@@ -49,4 +50,58 @@ a:hover {
 .navbar li a {
   user-select: none;
   position: relative;
+}
+
+.page-title {
+    text-align: left;
+    font-size: 2em;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.page-action-bar {
+    text-align: right;
+    font-size: 2em;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.img-rounded {
+    border-radius: 50% !important;
+}
+
+.card {
+    padding: 10px;
+    margin: 20px;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+}
+
+.card .name{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.card .btn-actions {
+    text-align: right;
+}
+
+.title {
+    text-align: center;
+    font-size: 2em;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 2em;
+    font-style: italic;
+}
+
+.team-teammates-title {
+    text-align: right;
+    font-weight: bold;
+}
+
+.team-teammates {
+    text-align: right;
+    font-style: italic;
 }

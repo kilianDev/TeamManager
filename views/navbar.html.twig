@@ -11,7 +11,10 @@
         </div>
 
         <div class="collapse navbar-collapse" id="mainNavbar">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-left">
+                <li {% if 'home' == active %}class="active"{% endif %}>
+                    <a href="/teammanager/web/">Home</a>
+                </li>
                 <li {% if 'teams' == active %}class="active"{% endif %}>
                     <a href="/teammanager/web/teams">Teams</a>
                 </li>

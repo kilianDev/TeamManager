@@ -3,17 +3,56 @@
 
 {% block content %}
 
-    Teams list
+    <div class="container-fluid">
 
-    {% for team in teams %}
-        <br />
-        Displaying team id : <a href="/teammanager/web/team/{{ team.id }}">{{ team.id }}</a>
-        <br />Name : {{ team.name }}
-        <br />Description : {{ team.description }}
-        <br />Image : {{ team.image }}
-        <br /><a href="/teammanager/web/team/{{ team.id }}/delete"><i class="fa fa-trash-o"></i></a>
-        <br />
-    {% endfor %}
+        <div class="col-lg-6 page-title">
+            Teams list
+        </div>
+
+        <div class="col-lg-6 page-action-bar">
+            <a href="/teammanager/web/team/create"><i class="fa fa-plus-circle"></i> Create a team</a>
+        </div>
+
+        {% if teams is empty %}
+            <div class="col-lg-12 title">
+                You have no teams :(
+            </div>
+            <div class="col-lg-12 subtitle">
+                Click <a href="/teammanager/web/team/create">here</a> to create one
+            </div>
+        {% else %}
+
+            {% for team in teams %}
+                <div class="col-lg-4 col-md-4 col-sm-6 col-sm-12">
+                    <div class="card">
+                        <div class="name">
+                            <strong>{{ team.name}}</strong>
+                        </div>
+                        <div>
+                            {{ team.description }}
+                        </div>
+                        {% if team.teammates is defined and team.teammates is not empty %}
+                            <hr />
+                                <div class="team-teammates-title">
+                                    Teammates
+                                </div>
+                            {% for teammate in team.teammates %}
+                                <div class="team-teammates">
+                                    {{ teammate.firstname }} {{ teammate.lastname }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <hr>
+                        <div class="btn-actions">
+                            <a class="btn btn-danger" href="/teammanager/web/team/{{ team.id }}/delete"><i class="fa fa-trash-o"> Delete</i></a>
+                            <a class="btn btn-primary" href="/teammanager/web/team/{{ team.id }}"><i class="fa fa-pencil-square-o"> Edit</i></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        {% endif %}
+    </div>
 
 
 {% endblock %}

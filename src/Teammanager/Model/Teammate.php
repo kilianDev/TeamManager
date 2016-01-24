@@ -137,4 +137,11 @@ class Teammate
         return $this->getFirstname().' '.$this->getLastname();
     }
 
+    public function hydrate($data) {
+        $this->setFirstname($data['firstname']);
+        $this->setLastname($data['lastname']);
+        $this->setEmail($data['email']);
+        $this->setPhone($data['phone']);
+        $this->setImage($data['image']);
+    }
 }
