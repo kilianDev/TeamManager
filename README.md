@@ -9,17 +9,24 @@ It uses :
 Getting started
 ---------------
 * Install the dependencies :
-    composer install
+```sh
+composer install
+```
 
 * Import the db schema into an already created MySQL database (exemple with a db named teammanager)
-    mysql -u root -p teammanager < app/resources/schema.sql
+```sh
+mysql -u root -p teammanager < app/resources/schema.sql
+```
  
 * Optionnaly, import some fake data :
-    mysql -u root -p teammanager < app/resources/some_data.sql
- 
-* Finally, configure the DB credentials into the config file 
-    app/config/prod.php
+```sh
+mysql -u root -p teammanager < app/resources/some_data.sql
+```
 
+* Finally, configure the DB credentials into the config file 
+```
+app/config/prod.php
+```
  
 And you're good to go !
 
